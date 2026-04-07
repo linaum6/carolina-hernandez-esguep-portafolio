@@ -12,50 +12,38 @@ margin:0;
 font-family: Arial, sans-serif;
 background:white;
 color:black;
-text-align:center;
 }
 
-header{
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+.hero img{
+width:100%;
+height:85vh;
+object-fit:cover;
 margin-top:30px;
-text-align:center;
 }
 
-header h1{
+.menu{
+text-align:center;
+padding:30px 0 10px 0;
+}
+
+.menu h1{
 font-size:22px;
-font-weight:600;
+font-weight:bold;
 margin-bottom:15px;
-text-align:center;
+letter-spacing:1px;
 }
 
-nav{
-text-align:center;
-}
-
-nav a{
+.menu a{
 margin:0 20px;
 text-decoration:none;
 color:black;
 font-size:16px;
-}
-
-.imagen-principal{
-display:flex;
-justify-content:center;
-margin-top:40px;
-}
-
-.imagen-principal img{
-width:75%;
-max-width:900px;
-height:auto;
-}
-
-footer{
-margin-top:30px;
-font-size:13px;
-color:gray;
-margin-bottom:30px;
-text-align:center;
 }
 
 </style>
@@ -64,25 +52,23 @@ text-align:center;
 
 <body>
 
-<header>
+<section class="hero">
+
+<div class="menu">
+
 <h1>Carolina Hernández</h1>
 
-<nav>
 <a href="obras.html">Obras</a>
 <a href="pedagogia.html">Pedagogía</a>
 <a href="trayectoria.html">Trayectoria</a>
 <a href="contacto.html">Contacto</a>
-</nav>
 
-</header>
-
-<div class="imagen-principal">
-<img src="proyeccion.jpg">
 </div>
 
-<footer>
-Carolina Hernández — Artista Visual
-</footer>
+<img src="proyeccion.jpg">
+
+</section>
 
 </body>
+
 </html>
