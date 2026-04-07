@@ -12,38 +12,47 @@ margin:0;
 font-family: Arial, sans-serif;
 background:white;
 color:black;
-}
-
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-}
-
-.hero img{
-width:100%;
-height:85vh;
-object-fit:cover;
-}
-
-.menu{
 text-align:center;
-padding:25px 0;
 }
 
-.menu h1{
-font-size:16px;
-font-weight:normal;
-margin-bottom:15px;
-letter-spacing:1px;
+header{
+padding:30px 0 10px 0;
 }
 
-.menu a{
+header h1{
+font-size:22px;
+font-weight:600;
+margin:0;
+}
+
+.imagen-principal{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+.imagen-principal img{
+width:85%;
+max-width:1000px;
+height:auto;
+}
+
+nav{
+margin-top:30px;
+}
+
+nav a{
 margin:0 20px;
 text-decoration:none;
 color:black;
 font-size:16px;
+}
+
+footer{
+margin-top:30px;
+font-size:13px;
+color:gray;
+margin-bottom:30px;
 }
 
 </style>
@@ -52,23 +61,24 @@ font-size:16px;
 
 <body>
 
-<section class="hero">
-
-<img src="proyeccion.jpg">
-
-<div class="menu">
-
+<header>
 <h1>Carolina Hernández</h1>
+</header>
 
+<div class="imagen-principal">
+<img src="proyeccion.jpg">
+</div>
+
+<nav>
 <a href="obras.html">Obras</a>
 <a href="pedagogia.html">Pedagogía</a>
 <a href="trayectoria.html">Trayectoria</a>
 <a href="contacto.html">Contacto</a>
+</nav>
 
-</div>
-
-</section>
+<footer>
+Carolina Hernández — Artista Visual
+</footer>
 
 </body>
-
 </html>
