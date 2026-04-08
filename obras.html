@@ -36,7 +36,7 @@ h2.titulo-galeria{
 
 .galeria{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* columnas flexibles */
+  grid-template-columns: repeat(4, 1fr); /* siempre 4 columnas */
   gap:20px;
   padding:0 60px 40px 60px;
   flex-grow:1;
@@ -44,7 +44,7 @@ h2.titulo-galeria{
 
 .obra img{
   width:100%;
-  aspect-ratio:1/1; /* fuerza cuadrado */
+  aspect-ratio: 5 / 7; /* media rectangular vertical */
   object-fit:cover;
   border-radius:4px;
 }
