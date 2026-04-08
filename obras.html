@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escultura - Carolina Hernández</title>
+<title>Obras - Carolina Hernández</title>
 
 <style>
 
@@ -27,8 +27,29 @@ font-size:18px;
 
 section{
 padding:60px;
-max-width:900px;
+max-width:1200px;
 margin:auto;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(4, 1fr);
+gap:60px;
+margin-top:40px;
+}
+
+.obra{
+text-align:center;
+}
+
+.obra img{
+width:100%;
+max-width:220px;
+height:auto;
+}
+
+.obra p{
+margin-top:10px;
 }
 
 </style>
@@ -53,9 +74,32 @@ margin:auto;
 
 <section>
 
-<h2>Escultura</h2>
+<h2>Obras</h2>
 
-<p>Próximamente</p>
+<div class="galeria">
+
+<div class="obra">
+<a href="obra-papeles.html">
+<img src="papel1.png">
+<p>Papeles</p>
+</a>
+</div>
+
+<div class="obra">
+<a href="obra-piel.html">
+<img src="piel4.jpg">
+<p>Piel Artificial</p>
+</a>
+</div>
+
+<div class="obra">
+<a href="obra-escultura.html">
+<img src="escultura1.jpg">
+<p>Escultura</p>
+</a>
+</div>
+
+</div>
 
 </section>
 
