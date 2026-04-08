@@ -21,41 +21,33 @@ nav a{
   margin:15px;
   text-decoration:none;
   color:black;
-  font-size:18px;
+  font-size:16px; /* un poquito más pequeño */
 }
 
 h2.titulo-galeria{
-  text-align:center;
+  text-align:left; /* alineado a la izquierda */
   font-weight:bold;
-  margin-top:40px;
-  margin-bottom:40px;
-  font-size:28px;
+  margin:20px 60px; /* separación arriba y lados */
+  font-size:22px; /* tamaño más pequeño */
 }
 
 .galeria{
   display:grid;
   grid-template-columns: repeat(4, 1fr);
-  gap:30px;
-  padding:0 60px 60px 60px;
+  gap:20px; /* un poco menos de espacio entre imágenes */
+  padding:0 60px 40px 60px;
 }
 
 .obra img{
   width:100%;
-  max-height:200px; /* más pequeño que antes */
+  height:180px; /* tamaño más compacto */
   object-fit:cover;
-  border:1px solid #ddd;
-  border-radius:4px;
-  transition: transform 0.3s;
-}
-
-.obra img:hover{
-  transform: scale(1.05);
 }
 
 .obra p{
   text-align:center;
-  margin-top:10px;
-  font-size:16px;
+  margin-top:8px;
+  font-size:14px; /* más pequeño */
   font-weight:normal;
 }
 
