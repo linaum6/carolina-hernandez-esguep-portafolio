@@ -10,9 +10,6 @@ body{
   font-family: Arial, sans-serif;
   margin:0;
   background:white;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
 }
 
 header{
@@ -24,36 +21,26 @@ nav a{
   margin:15px;
   text-decoration:none;
   color:black;
-  font-size:17px;
-}
-
-h2.titulo-galeria{
-  text-align:left;
-  font-weight:bold;
-  margin:20px 60px;
-  font-size:24px;
+  font-size:18px;
 }
 
 .galeria{
   display:grid;
-  grid-template-columns: repeat(4, 1fr); /* siempre 4 columnas */
-  gap:20px;
-  padding:0 60px 40px 60px;
-  flex-grow:1;
+  grid-template-columns: repeat(4, 1fr);
+  gap:40px;
+  padding:60px;
 }
 
 .obra img{
   width:100%;
-  aspect-ratio: 5 / 7; /* media rectangular vertical */
+  height:250px;
   object-fit:cover;
-  border-radius:4px;
 }
 
 .obra p{
   text-align:center;
-  margin-top:6px;
-  font-size:15px;
-  font-weight:normal;
+  margin-top:10px;
+  font-size:16px;
 }
 
 .obra a{
@@ -74,66 +61,67 @@ footer{
 <body>
 
 <header>
-  <h1>Carolina Hernández</h1>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="obras.html">Obras</a>
-    <a href="pedagogia.html">Pedagogía</a>
-    <a href="trayectoria.html">Trayectoria</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-</header>
 
-<h2 class="titulo-galeria">Obras</h2>
+<h1>Carolina Hernández</h1>
+
+<nav>
+<a href="index.html">Inicio</a>
+<a href="obras.html">Obras</a>
+<a href="pedagogia.html">Pedagogía</a>
+<a href="trayectoria.html">Trayectoria</a>
+<a href="contacto.html">Contacto</a>
+</nav>
+
+</header>
 
 <section class="galeria">
 
-  <div class="obra">
-    <a href="obra-plumillas.html">
-      <img src="papel1.png" alt="5000 plumillas">
-      <p>5000 plumillas</p>
-    </a>
-  </div>
+<div class="obra">
+  <a href="obra-plumillas.html"> <!-- enlace corregido -->
+    <img src="papel1.png" alt="5000 plumillas">
+    <p>5000 plumillas</p>
+  </a>
+</div>
 
-  <div class="obra">
-    <a href="obra-piel.html">
-      <img src="piel4.jpg" alt="Piel Artificial">
-      <p>Piel Artificial</p>
-    </a>
-  </div>
+<div class="obra">
+  <a href="obra-piel.html">
+    <img src="piel4.jpg" alt="Piel Artificial">
+    <p>Piel Artificial</p>
+  </a>
+</div>
 
-  <div class="obra">
-    <a href="obra-escultura.html">
-      <img src="escultura1.jpg" alt="Escultura">
-      <p>Escultura</p>
-    </a>
-  </div>
+<div class="obra">
+  <a href="obra-escultura.html">
+    <img src="escultura1.jpg" alt="Escultura">
+    <p>Escultura</p>
+  </a>
+</div>
 
-  <div class="obra">
-    <a href="obra-480piezas.html">
-      <img src="piezas1.jpg" alt="480 Piezas">
-      <p>480 Piezas</p>
-    </a>
-  </div>
+<div class="obra">
+  <a href="obra-480piezas.html">
+    <img src="piezas1.jpg" alt="480 Piezas">
+    <p>480 Piezas</p>
+  </a>
+</div>
 
-  <div class="obra">
-    <a href="obra-fotografia.html">
-      <img src="foto13.JPG" alt="Fotografía">
-      <p>Fotografía</p>
-    </a>
-  </div>
+<div class="obra">
+  <a href="obra-fotografia.html">
+    <img src="foto13.JPG" alt="Fotografía">
+    <p>Fotografía</p>
+  </a>
+</div>
 
-  <div class="obra">
-    <a href="obra-ilustraciones.html">
-      <img src="ilustracion2.jpg" alt="Ilustraciones">
-      <p>Ilustraciones</p>
-    </a>
-  </div>
+<div class="obra">
+  <a href="obra-ilustraciones.html">
+    <img src="ilustracion2.jpg" alt="Ilustraciones">
+    <p>Ilustraciones</p>
+  </a>
+</div>
 
 </section>
 
 <footer>
-  Carolina Hernández - Artista Visual
+Carolina Hernández - Artista Visual
 </footer>
 
 </body>
