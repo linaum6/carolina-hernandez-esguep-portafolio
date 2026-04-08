@@ -31,9 +31,17 @@ section{
   margin:auto;
 }
 
+/* 👇 AQUÍ ESTÁ EL CAMBIO IMPORTANTE */
+.galeria{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:20px;
+}
+
 .galeria img{
   width:100%;
-  margin-bottom:40px;
+  height:300px;
+  object-fit:cover;
 }
 
 .descripcion{
@@ -80,7 +88,8 @@ Serie que explora la interacción entre la proyección de imágenes y objetos tr
 </div>
 
 <div class="galeria">
-<img src="sobreobjetos.jpg" alt="Proyección sobre objeto">
+  <img src="sobreobjetos.jpg" alt="Proyección sobre objeto">
+  <img src="proyeccion.jpg" alt="Proyección sobre objeto">
 </div>
 
 </section>
