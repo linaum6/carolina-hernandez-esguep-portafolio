@@ -6,7 +6,58 @@
 <title>Trabajo con niños haitianos - Carolina Hernández</title>
 
 <style>
+<script>
 
+const images = document.querySelectorAll('.galeria img');
+let currentIndex = 0;
+
+const viewer = document.createElement('div');
+viewer.style.position = 'fixed';
+viewer.style.top = 0;
+viewer.style.left = 0;
+viewer.style.width = '100%';
+viewer.style.height = '100%';
+viewer.style.background = 'rgba(0,0,0,0.9)';
+viewer.style.display = 'none';
+viewer.style.alignItems = 'center';
+viewer.style.justifyContent = 'center';
+
+const img = document.createElement('img');
+img.style.maxWidth = '90%';
+img.style.maxHeight = '90%';
+
+viewer.appendChild(img);
+document.body.appendChild(viewer);
+
+images.forEach((image, index) => {
+  image.addEventListener('click', () => {
+    currentIndex = index;
+    img.src = image.src;
+    viewer.style.display = 'flex';
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  if(viewer.style.display === 'flex'){
+    if(e.key === 'ArrowRight'){
+      currentIndex = (currentIndex + 1) % images.length;
+      img.src = images[currentIndex].src;
+    }
+    if(e.key === 'ArrowLeft'){
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      img.src = images[currentIndex].src;
+    }
+    if(e.key === 'Escape'){
+      viewer.style.display = 'none';
+    }
+  }
+});
+
+viewer.addEventListener('click', () => {
+  viewer.style.display = 'none';
+});
+
+</script>
 body{
   font-family: Arial, sans-serif;
   margin:0;
