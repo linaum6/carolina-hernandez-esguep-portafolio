@@ -44,14 +44,16 @@ h2.titulo-galeria{
 
 .obra img{
   width:100%;
-  height:150px; /* tamaño pequeño */
-  object-fit:cover;
+  height:150px; /* altura ajustada */
+  aspect-ratio: 1/1; /* para que sea cuadrada */
+  object-fit:cover; /* mantiene la proporción y recorta si es necesario */
+  border-radius:4px; /* opcional, suaviza bordes */
 }
 
 .obra p{
   text-align:center;
   margin-top:6px;
-  font-size:15px; /* texto más grande */
+  font-size:15px;
   font-weight:normal;
 }
 
