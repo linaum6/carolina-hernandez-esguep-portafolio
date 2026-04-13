@@ -31,15 +31,95 @@ max-width:900px;
 margin:auto;
 }
 
-footer{
-  text-align:center;
-  font-size:12px;
-  color:gray;
-  padding:20px 0;
-  border-top:1px solid #eee;
-  margin-top:40px; /* 👈 esto ayuda a separarlo del contenido */
+/* TEXTO */
+.descripcion{
+margin-bottom:40px;
+line-height:1.6;
 }
-  
+
+/* GALERIA */
+.galeria{
+display:grid;
+grid-template-columns: repeat(2, 1fr);
+gap:15px;
+}
+
+.galeria img{
+width:100%;
+height:260px;
+object-fit:cover;
+cursor:pointer;
+transition: transform 0.3s ease;
+}
+
+.galeria img:hover{
+transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width:600px){
+.galeria{
+grid-template-columns: 1fr;
+}
+}
+
+/* VISOR */
+.viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.viewer img{
+max-width:70%;
+max-height:70%;
+}
+
+.boton{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:40px;
+color:white;
+cursor:pointer;
+padding:20px;
+}
+
+.prev{ left:20px; }
+.next{ right:20px; }
+
+.cerrar{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+.contador{
+position:absolute;
+bottom:30px;
+color:white;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+font-size:12px;
+color:gray;
+padding:20px 0;
+border-top:1px solid #eee;
+margin-top:40px;
+}
+
 </style>
 
 </head>
@@ -63,16 +143,106 @@ footer{
 
 <section>
 
-<h2>"6 mts x 60 cm"</h2>
+<h2>6 mts x 60 cm</h2>
 
-<p>Próximamente</p>
+<!-- TEXTO -->
+<div class="descripcion">
+<p>
+Trabajo escultórico que explora la relación entre escala, repetición y
+ocupación del espacio. La pieza se despliega en el entorno generando una
+tensión entre lo lineal y lo orgánico, invitando a una lectura corporal
+del recorrido.
+</p>
+</div>
+
+<!-- GALERIA -->
+<div class="galeria">
+<img src="escultura1.jpg" alt="Escultura">
+<img src="escultura2.jpg" alt="Escultura">
+</div>
 
 </section>
-  
+
 <footer>
 Carolina Hernández Esguep - Artista Visual
 </footer>
-  
-</body>
 
+<script>
+
+const images = document.querySelectorAll('.galeria img');
+let currentIndex = 0;
+
+/* VISOR */
+const viewer = document.createElement('div');
+viewer.className = 'viewer';
+
+const img = document.createElement('img');
+
+const prev = document.createElement('div');
+prev.className = 'boton prev';
+prev.innerHTML = '←';
+
+const next = document.createElement('div');
+next.className = 'boton next';
+next.innerHTML = '→';
+
+const cerrar = document.createElement('div');
+cerrar.className = 'cerrar';
+cerrar.innerHTML = '✕';
+
+const contador = document.createElement('div');
+contador.className = 'contador';
+
+viewer.appendChild(img);
+viewer.appendChild(prev);
+viewer.appendChild(next);
+viewer.appendChild(cerrar);
+viewer.appendChild(contador);
+
+document.body.appendChild(viewer);
+
+/* MOSTRAR */
+function mostrarImagen(index){
+img.src = images[index].src;
+contador.innerText = (index + 1) + " / " + images.length;
+}
+
+/* CLICK */
+images.forEach((image, index) => {
+image.addEventListener('click', () => {
+currentIndex = index;
+viewer.style.display = 'flex';
+mostrarImagen(currentIndex);
+});
+});
+
+/* BOTONES */
+next.onclick = () => {
+currentIndex = (currentIndex + 1) % images.length;
+mostrarImagen(currentIndex);
+};
+
+prev.onclick = () => {
+currentIndex = (currentIndex - 1 + images.length) % images.length;
+mostrarImagen(currentIndex);
+};
+
+/* TECLADO */
+document.addEventListener('keydown', (e) => {
+if(viewer.style.display === 'flex'){
+if(e.key === 'ArrowRight') next.onclick();
+if(e.key === 'ArrowLeft') prev.onclick();
+if(e.key === 'Escape') viewer.style.display = 'none';
+}
+});
+
+/* CERRAR */
+cerrar.onclick = () => viewer.style.display = 'none';
+viewer.onclick = (e) => {
+if(e.target === viewer) viewer.style.display = 'none';
+};
+
+</script>
+
+</body>
 </html>
