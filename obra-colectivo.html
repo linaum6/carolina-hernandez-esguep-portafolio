@@ -8,52 +8,123 @@
 <style>
 
 body{
-  font-family: Arial, sans-serif;
-  margin:0;
-  background:white;
+font-family: Arial, sans-serif;
+margin:0;
+background:white;
 }
 
 header{
-  padding:40px;
-  text-align:center;
+padding:40px;
+text-align:center;
 }
 
 nav a{
-  margin:15px;
-  text-decoration:none;
-  color:black;
-  font-size:18px;
+margin:15px;
+text-decoration:none;
+color:black;
+font-size:18px;
 }
 
 section{
-  padding:60px;
-  max-width:900px;
-  margin:auto;
+padding:60px;
+max-width:900px;
+margin:auto;
 }
-  
+
 .descripcion img{
 width:70%;
 display:block;
 margin:30px auto;
 }
-  
+
 .galeria img{
-  width:100%;
-  height:400px;
-  object-fit:contain;
+width:100%;
+height:400px;
+object-fit:contain;
 }
 
 .descripcion{
-  margin-bottom:40px;
-  line-height:1.6;
+margin-bottom:40px;
+line-height:1.6;
+}
+
+/* EJERCICIOS */
+
+.ejercicios{
+display:grid;
+grid-template-columns: repeat(3, 1fr);
+gap:30px;
+margin-top:30px;
+}
+
+.ejercicio{
+text-align:center;
+}
+
+.ejercicio img{
+width:100%;
+margin-top:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.ejercicio img:hover{
+opacity:0.8;
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+display:none;
+position:fixed;
+z-index:999;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.9);
+}
+
+.lightbox img{
+margin:auto;
+display:block;
+max-width:80%;
+max-height:80%;
+margin-top:5%;
+}
+
+.cerrar{
+position:absolute;
+top:20px;
+right:40px;
+color:white;
+font-size:40px;
+cursor:pointer;
+}
+
+.flecha{
+position:absolute;
+top:50%;
+color:white;
+font-size:40px;
+cursor:pointer;
+padding:10px;
+}
+
+.izquierda{
+left:20px;
+}
+
+.derecha{
+right:20px;
 }
 
 footer{
-  text-align:center;
-  font-size:12px;
-  color:gray;
-  padding:20px 0;
-  border-top:1px solid #eee;
+text-align:center;
+font-size:12px;
+color:gray;
+padding:20px 0;
+border-top:1px solid #eee;
 }
 
 </style>
@@ -82,26 +153,46 @@ footer{
 <h2>Colectivo "P/a"</h2>
 
 <div class="descripcion">
-  
+
 <p>
-Su nombre proviene del proceso productivo de taller, haciendo alusión a las pruebas de Artista o pruebas de autor, P/a, que forman parte de todo desarrollo creativo al
-interior de los talleres de grabado o gráfica. 
-Tiene como objetivo principal trabajar desde el no protagonismo de sus integrantes. Se desarrollan trabajos de taller a partir de ejercicios propuestos y discutidos en el
-colectivo, generando la discusión sobre la producción y distribución del arte.
-Así mismo P/a con el interés de fomentar la conversación y el desarrollo de problemáticas productivas al interior del taller, quiso proponerse ejercicios forzados,
-que luego de un proceso de discusión generan una solo obra, en el contexto de prueba, las que son re articuladas y descontextualizadas, superponiéndolas al
-paisaje de la Ciudad, Galería u otro.  
+Su nombre proviene del proceso productivo de taller...
 </p>
 
 <p><strong>Temas específicos:</strong> intervenciones urbanas en la Ciudad y sus límites.</p>
 
 <img src="colectivo4.jpg" alt="Colectivo P/a">
-  
-<p><strong>Ejercicio n°1:</strong> Programa "Historia y barro" - Proyecto Hoffmann´s House (2001). Galería Metropolitana</p>
 
-<p><strong>Ejercicio n°2</strong> (2001). Galería Metropolitana</p>
+<div class="ejercicios">
 
-<p><strong>Ejercicio n°3</strong> (2001). Galería BECH</p>
+<div class="ejercicio">
+<p><strong>Ejercicio n°1</strong><br>
+Programa "Historia y barro"<br>
+Galería Metropolitana (2001)
+</p>
+
+<img src="hoffmannhouse.jpg" onclick="abrirGaleria(0)">
+
+</div>
+
+<div class="ejercicio">
+<p><strong>Ejercicio n°2</strong><br>
+Galería Metropolitana (2001)
+</p>
+
+<img src="rojo1.jpg" onclick="abrirGaleria(1)">
+
+</div>
+
+<div class="ejercicio">
+<p><strong>Ejercicio n°3</strong><br>
+Galería BECH (2001)
+</p>
+
+<img src="imagen1.jpg" onclick="abrirGaleria(4)">
+
+</div>
+
+</div>
 
 <br><br>
 
@@ -110,19 +201,91 @@ paisaje de la Ciudad, Galería u otro.
 <p>Galería Metropolitana - Santiago, Chile</p>
 <p>Museo de arte contemporáneo de Bochum. Alemania (2003)</p>
 
-<p><strong>Serie "Este mensaje no está marcado por una bandera"</strong> - Centro de extensión de la Universidad de Talca (2004)</p>
+<p><strong>Serie "Este mensaje no está marcado por una bandera"</strong></p>
 
 </div>
-</div>
+
 <div class="galeria">
-<img src="colectivo6.jpg" alt="Colectivo P/a">
+<img src="colectivo6.jpg">
 </div>
 
 </section>
 
+
+<div id="lightbox" class="lightbox">
+
+<span class="cerrar" onclick="cerrarGaleria()">×</span>
+
+<span class="flecha izquierda" onclick="cambiarImagen(-1)">❮</span>
+
+<img id="imagen-grande">
+
+<span class="flecha derecha" onclick="cambiarImagen(1)">❯</span>
+
+</div>
+
 <footer>
 Carolina Hernández Esguep - Artista Visual
 </footer>
+
+<script>
+
+let imagenes = [
+
+"hoffmannhouse.jpg",
+
+"rojo1.jpg",
+"rojo2.jpg",
+"rojo3.jpg",
+
+"imagen1.jpg",
+"imagen2.jpg"
+
+];
+
+let imagenActual = 0;
+
+function abrirGaleria(index){
+document.getElementById("lightbox").style.display="block";
+imagenActual = index;
+document.getElementById("imagen-grande").src = imagenes[imagenActual];
+}
+
+function cerrarGaleria(){
+document.getElementById("lightbox").style.display="none";
+}
+
+function cambiarImagen(direccion){
+imagenActual += direccion;
+
+if(imagenActual < 0){
+imagenActual = imagenes.length -1;
+}
+
+if(imagenActual >= imagenes.length){
+imagenActual = 0;
+}
+
+document.getElementById("imagen-grande").src = imagenes[imagenActual];
+}
+
+document.addEventListener("keydown", function(e){
+
+if(e.key === "Escape"){
+cerrarGaleria();
+}
+
+if(e.key === "ArrowRight"){
+cambiarImagen(1);
+}
+
+if(e.key === "ArrowLeft"){
+cambiarImagen(-1);
+}
+
+});
+
+</script>
 
 </body>
 </html>
