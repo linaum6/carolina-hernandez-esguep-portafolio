@@ -72,23 +72,47 @@ transition:0.3s;
 opacity:0.8;
 }
 
-/* SERIES */
+/* SERIES NUEVAS */
 
-.series{
+.series-general{
 display:grid;
-grid-template-columns: repeat(3, 1fr);
-gap:30px;
+grid-template-columns: 2fr 1fr;
+gap:40px;
 margin-top:40px;
+align-items:start;
+}
+
+.series-grupo{
+display:grid;
+grid-template-columns: 1fr 1fr;
+gap:30px;
 }
 
 .serie{
 text-align:center;
 }
 
-.serie img{
+.serie p{
+font-weight:bold;
+min-height:60px;
+}
+
+.cuadrada{
 width:100%;
-margin-top:15px;
+aspect-ratio:1/1;
+object-fit:cover;
 cursor:pointer;
+}
+
+.vertical{
+width:100%;
+aspect-ratio:3/4;
+object-fit:cover;
+cursor:pointer;
+}
+
+.serie-aparte{
+padding-left:10px;
 }
 
 /* LIGHTBOX */
@@ -227,29 +251,33 @@ Galería BECH (2001)
 
 <br><br>
 
-<h3>"This message is not flagged" (2003)</h3>
+<h3><strong>"This message is not flagged" (2003)</strong></h3>
 
-<div class="series">
+<div class="series-general">
+
+<div class="series-grupo">
 
 <div class="serie">
-<p>Ekeby qvarn art space - Uppsala, Suecia</p>
+<p><strong>Ekeby qvarn art space - Uppsala, Suecia</strong></p>
 
-<img src="colectivo10.jpg" onclick="abrirGaleria(6)">
+<img src="colectivo10.jpg" class="cuadrada" onclick="abrirGaleria(6)">
 <p class="contador">1 / 11</p>
 </div>
 
 <div class="serie">
-<p>Museo de arte contemporáneo de Bochum - Alemania</p>
+<p><strong>Museo de arte contemporáneo de Bochum - Alemania</strong></p>
 
-<img src="colectivo13.jpg" onclick="abrirGaleria(17)">
+<img src="colectivo13.jpg" class="vertical" onclick="abrirGaleria(17)">
 <p class="contador">1 / 3</p>
 </div>
 
-<div class="serie">
-<p><strong>"Este mensaje no está marcado por una bandera"</strong> (2004)</p>
-<p>Centro de extensión de la Universidad de Talca</p>
+</div>
 
-<img src="paja1.jpg" onclick="abrirGaleria(20)">
+<div class="serie serie-aparte">
+<p><strong>"Este mensaje no está marcado por una bandera" (2004)</strong></p>
+<p><strong>Centro de extensión de la Universidad de Talca</strong></p>
+
+<img src="paja1.jpg" class="cuadrada" onclick="abrirGaleria(20)">
 <p class="contador">1 / 7</p>
 </div>
 
