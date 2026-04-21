@@ -64,27 +64,34 @@ footer{
   margin-bottom:0px;
 }
 
-/* 🔥 NUEVO: referentes */
-.link-referentes{
-  padding-right:60px;   /* 👈 mismo margen que usas en la izquierda */
-  margin-top:50px;
-  margin-bottom:5px;
-  text-align:right;     /* 👈 esto lo manda a la derecha */
+/* 🔥 NUEVO BLOQUE CORRECTO */
+.cabecera-obras{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:0 60px;
+  margin-top:40px;
 }
 
-.link-referentes a{
+.titulo-obras{
+  font-size:24px;
+  font-weight:bold;
+  margin:0;
+}
+
+.link-referentes{
   text-decoration:none;
   color:black;
   font-weight:bold;
   font-size:22px;
   letter-spacing:2px;
-  text-transform:uppercase; /* 👈 se siente más importante */
+  text-transform:uppercase;
 }
 
-.link-referentes a:hover{
+.link-referentes:hover{
   opacity:0.6;
 }
-  
+
 </style>
  
 </head>
@@ -104,12 +111,14 @@ footer{
 
 </header>
 
-<!-- 🔥 NUEVO TEXTO -->
-<div class="link-referentes">
-  <a href="referentes.html">Referentes generales</a>
-</div>
+<!-- 🔥 CABECERA ALINEADA -->
+<div class="cabecera-obras">
+  <h2 class="titulo-obras">OBRAS</h2>
 
-<h2 class="titulo-seccion">Obras</h2> 
+  <a href="referentes.html" class="link-referentes">
+    Referentes generales
+  </a>
+</div>
   
 <section class="galeria">
 
