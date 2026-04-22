@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publicación - Carolina Hernández Esguep</title>
 
+<style>
+
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:white;
+}
+
+header{
+  padding:40px;
+  text-align:center;
+}
+
+nav a{
+  margin:15px;
+  text-decoration:none;
+  color:black;
+  font-size:18px;
+}
+
+section{
+  padding:60px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* GALERIA */
+.galeria{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:15px;
+}
+
+.galeria img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
+
+/* VISOR */
+.viewer{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:flex; /* 👈 ABRE AUTOMÁTICO */
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.viewer img{
+  max-width:75%;
+  max-height:75%;
+}
+
+/* BOTONES */
+.boton{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+  padding:20px;
+}
+
+.prev{ left:20px; }
+.next{ right:20px; }
+
+/* CONTADOR */
+.contador{
+  position:absolute;
+  bottom:30px;
+  color:white;
+  font-size:18px;
+}
+
+/* CERRAR */
+.cerrar{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  color:white;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  font-size:12px;
+  color:gray;
+  padding:20px 0;
+  border-top:1px solid #eee;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Carolina Hernández Esguep</h1>
+
+<nav>
+<a href="index.html">Inicio</a>
+<a href="obras.html">Obras</a>
+<a href="pedagogia.html">Pedagogía</a>
+<a href="trayectoria.html">Trayectoria</a> 
+<a href="contacto.html">Contacto</a>
+</nav>
+
+</header>
+
+<section>
+
+<h2>Publicación</h2>
+
+<div class="galeria">
+  <img src="libro1.png">
+  <img src="libro2.png">
+  <img src="libro3.png">
+  <img src="libro4.png">
+  <!-- agrega todas tus imágenes acá -->
+</div>
+
+</section>
+
+<script>
+
+const images = document.querySelectorAll('.galeria img');
+let currentIndex = 0;
+
+/* VISOR */
+const viewer = document.createElement('div');
+viewer.className = 'viewer';
+
+const img = document.createElement('img');
+
+const prev = document.createElement('div');
+prev.className = 'boton prev';
+prev.innerHTML = '←';
+
+const next = document.createElement('div');
+next.className = 'boton next';
+next.innerHTML = '→';
+
+const cerrar = document.createElement('div');
+cerrar.className = 'cerrar';
+cerrar.innerHTML = '✕';
+
+const contador = document.createElement('div');
+contador.className = 'contador';
+
+viewer.appendChild(img);
+viewer.appendChild(prev);
+viewer.appendChild(next);
+viewer.appendChild(cerrar);
+viewer.appendChild(contador);
+
+document.body.appendChild(viewer);
+
+/* MOSTRAR */
+function mostrarImagen(index){
+  img.src = images[index].src;
+  contador.innerText = (index + 1) + " / " + images.length;
+}
+
+/* 👉 ABRE AUTOMÁTICAMENTE */
+mostrarImagen(currentIndex);
+
+/* NAVEGACIÓN */
+next.onclick = () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  mostrarImagen(currentIndex);
+};
+
+prev.onclick = () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  mostrarImagen(currentIndex);
+};
+
+/* 🔥 BLOQUEAR ESC */
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowRight') next.onclick();
+  if(e.key === 'ArrowLeft') prev.onclick();
+});
+
+/* 🔥 SOLO SE CIERRA CON X */
+cerrar.onclick = () => viewer.style.display = 'none';
+
+</script>
+
+<footer>
+Carolina Hernández Esguep - Artista Visual
+</footer>
+
+</body>
+</html>
