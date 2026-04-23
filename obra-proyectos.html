@@ -43,23 +43,20 @@ section{
   cursor:pointer;
 }
 
-/* 🔥 IMAGEN */
 .item img{
   width:100%;
   height:300px;
   object-fit:cover;
 }
 
-/* 🔥 TITULO */
 .subtitulo{
   font-size:18px;
   margin-top:10px;
 }
 
-/* 🔥 TEXTO */
+/* 👇 TEXTO DEBAJO */
 .descripcion{
   font-size:14px;
-  color:#444;
   margin-top:5px;
   line-height:1.4;
 }
@@ -180,6 +177,7 @@ Carolina Hernández Esguep - Artista Visual
 
 document.addEventListener("DOMContentLoaded", () => {
 
+/* 🔥 GALERÍAS CORREGIDAS */
 const galerias = [
   [
     "terreno3.jpg",
@@ -191,16 +189,18 @@ const galerias = [
     "planificacion2.jpg",
     "planificacion3.png",
     "planificacion4.jpg",
-    "planificacion5.jpg"
+    "planificacion5.jpg" // 👈 CORREGIDO
   ]
 ];
 
 let galeriaActual = 0;
 let indexActual = 0;
 
+/* ELEMENTOS */
 const viewer = document.getElementById("viewer");
 const img = document.getElementById("imagenActiva");
 
+/* CONTADOR */
 const contador = document.createElement("div");
 contador.style.position = "absolute";
 contador.style.bottom = "30px";
@@ -208,6 +208,7 @@ contador.style.color = "white";
 contador.style.fontSize = "18px";
 viewer.appendChild(contador);
 
+/* MOSTRAR */
 function mostrar(){
   img.style.opacity = 0;
 
@@ -218,6 +219,7 @@ function mostrar(){
   }, 150);
 }
 
+/* ABRIR */
 window.abrirGaleria = function(id){
   galeriaActual = id;
   indexActual = 0;
@@ -225,16 +227,19 @@ window.abrirGaleria = function(id){
   mostrar();
 }
 
+/* CAMBIAR */
 window.cambiar = function(dir){
   const total = galerias[galeriaActual].length;
   indexActual = (indexActual + dir + total) % total;
   mostrar();
 }
 
+/* CERRAR */
 window.cerrarGaleria = function(){
   viewer.style.display = "none";
 }
 
+/* TECLADO */
 document.addEventListener("keydown", (e) => {
   if(viewer.style.display === "flex"){
     if(e.key === "ArrowRight") cambiar(1);
@@ -253,8 +258,13 @@ viewer.addEventListener("touchstart", (e) => {
 viewer.addEventListener("touchend", (e) => {
   let endX = e.changedTouches[0].clientX;
 
-  if(startX - endX > 50) cambiar(1);
-  if(endX - startX > 50) cambiar(-1);
+  if(startX - endX > 50){
+    cambiar(1);
+  }
+
+  if(endX - startX > 50){
+    cambiar(-1);
+  }
 });
 
 });
