@@ -208,15 +208,9 @@ contador.style.color = "white";
 contador.style.fontSize = "18px";
 viewer.appendChild(contador);
 
-/* MOSTRAR */
 function mostrar(){
-  img.style.opacity = 0;
-
-  setTimeout(() => {
-    img.src = galerias[galeriaActual][indexActual];
-    contador.innerText = (indexActual + 1) + " / " + galerias[galeriaActual].length;
-    img.style.opacity = 1;
-  }, 150);
+  img.src = galerias[galeriaActual][indexActual];
+  contador.innerText = (indexActual + 1) + " / " + galerias[galeriaActual].length;
 }
 
 /* ABRIR */
