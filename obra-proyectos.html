@@ -71,6 +71,7 @@ section{
 .viewer img{
   max-width:80%;
   max-height:80%;
+  transition:0.3s;
 }
 
 /* BOTONES */
@@ -128,7 +129,6 @@ footer{
 
 <h2>Proyectos</h2>
 
-<!-- 🔥 AHORA ESTÁN LADO A LADO -->
 <div class="proyectos">
 
   <!-- TERRENO -->
@@ -159,11 +159,11 @@ footer{
 Carolina Hernández Esguep - Artista Visual
 </footer>
 
-
-
 <script>
 
-/* 🔥 GALERÍAS SEPARADAS (CORREGIDO) */
+document.addEventListener("DOMContentLoaded", () => {
+
+/* 🔥 GALERÍAS */
 const galerias = [
   [
     "terreno3.jpg",
@@ -206,7 +206,7 @@ function mostrar(){
 }
 
 /* ABRIR */
-function abrirGaleria(id){
+window.abrirGaleria = function(id){
   galeriaActual = id;
   indexActual = 0;
   viewer.style.display = "flex";
@@ -214,14 +214,14 @@ function abrirGaleria(id){
 }
 
 /* CAMBIAR */
-function cambiar(dir){
+window.cambiar = function(dir){
   const total = galerias[galeriaActual].length;
   indexActual = (indexActual + dir + total) % total;
   mostrar();
 }
 
 /* CERRAR */
-function cerrarGaleria(){
+window.cerrarGaleria = function(){
   viewer.style.display = "none";
 }
 
@@ -234,7 +234,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-/* 🔥 SWIPE (CELULAR) */
+/* SWIPE (CELULAR) */
 let startX = 0;
 
 viewer.addEventListener("touchstart", (e) => {
@@ -245,16 +245,17 @@ viewer.addEventListener("touchend", (e) => {
   let endX = e.changedTouches[0].clientX;
 
   if(startX - endX > 50){
-    cambiar(1); // izquierda → siguiente
+    cambiar(1);
   }
 
   if(endX - startX > 50){
-    cambiar(-1); // derecha → anterior
+    cambiar(-1);
   }
 });
 
-</script>
+});
 
+</script>
 
 </body>
 </html>
