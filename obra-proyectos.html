@@ -31,21 +31,69 @@ section{
   margin:auto;
 }
 
-.galeria img{
-  width:100%;
-  height:400px;
-  object-fit:contain;
-}
-
-.descripcion{
+/* 🔥 DOS COLUMNAS */
+.proyectos{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:40px;
   margin-bottom:40px;
-  line-height:1.6;
 }
 
-/* 👇 estilo para los dos textos */
+.item{
+  cursor:pointer;
+}
+
+.item img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
 .subtitulo{
   font-size:18px;
-  margin-bottom:10px;
+  margin-top:10px;
+}
+
+/* VISOR */
+.viewer{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.viewer img{
+  max-width:80%;
+  max-height:80%;
+}
+
+/* BOTONES */
+.boton{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+  padding:20px;
+}
+
+.prev{ left:20px; }
+.next{ right:20px; }
+
+.cerrar{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  color:white;
+  cursor:pointer;
 }
 
 footer{
@@ -80,20 +128,78 @@ footer{
 
 <h2>Proyectos</h2>
 
-<div class="descripcion">
-   <p class="subtitulo">Terreno baldío(2003)</p>
-  <p class="subtitulo">"Solo 3"(2007)</p>
-</div>
+<!-- 🔥 AHORA ESTÁN LADO A LADO -->
+<div class="proyectos">
 
-<div class="galeria">
-<img src="nosvemos.png" alt="Proyectos">
+  <!-- TERRENO -->
+  <div class="item" onclick="abrirGaleria(0)">
+    <img src="terreno3.jpg">
+    <p class="subtitulo">Terreno baldío (2003)</p>
+  </div>
+
+  <!-- SOLO 3 -->
+  <div class="item" onclick="abrirGaleria(1)">
+    <img src="planificacion1.jpg">
+    <p class="subtitulo">"Solo 3" (2007)</p>
+  </div>
+
 </div>
 
 </section>
 
+<!-- VISOR -->
+<div class="viewer" id="viewer">
+  <span class="cerrar" onclick="cerrarGaleria()">✕</span>
+  <span class="boton prev" onclick="cambiar(-1)">←</span>
+  <img id="imagenActiva">
+  <span class="boton next" onclick="cambiar(1)">→</span>
+</div>
+
 <footer>
 Carolina Hernández Esguep - Artista Visual
 </footer>
+
+<script>
+
+/* 🔥 GALERÍAS SEPARADAS */
+const galerias = [
+  ["terreno3.jpg"], 
+  ["planificacion1.jpg"]
+];
+
+let galeriaActual = 0;
+let indexActual = 0;
+
+function abrirGaleria(id){
+  galeriaActual = id;
+  indexActual = 0;
+  document.getElementById("viewer").style.display = "flex";
+  mostrar();
+}
+
+function mostrar(){
+  document.getElementById("imagenActiva").src = galerias[galeriaActual][indexActual];
+}
+
+function cambiar(dir){
+  const total = galerias[galeriaActual].length;
+  indexActual = (indexActual + dir + total) % total;
+  mostrar();
+}
+
+function cerrarGaleria(){
+  document.getElementById("viewer").style.display = "none";
+}
+
+/* TECLADO */
+document.addEventListener("keydown", (e) => {
+  if(document.getElementById("viewer").style.display === "flex"){
+    if(e.key === "ArrowRight") cambiar(1);
+    if(e.key === "ArrowLeft") cambiar(-1);
+  }
+});
+
+</script>
 
 </body>
 </html>
