@@ -159,57 +159,102 @@ footer{
 Carolina Hernández Esguep - Artista Visual
 </footer>
 
+
+
 <script>
 
-/* 🔥 GALERÍAS SEPARADAS */
+/* 🔥 GALERÍAS SEPARADAS (CORREGIDO) */
 const galerias = [
   [
     "terreno3.jpg",
-  "terreno2.jpg,
-  "terreno1.jpg"
+    "terreno2.jpg",
+    "terreno1.jpg"
   ], 
   [
     "planificacion1.jpg",
-   "planificacion2.jpg",
-  "planificacion3.png",
-  "planificacion4.jpg",
-  "planificacion5.png"
+    "planificacion2.jpg",
+    "planificacion3.png",
+    "planificacion4.jpg",
+    "planificacion5.png"
   ]
 ];
 
 let galeriaActual = 0;
 let indexActual = 0;
 
+/* ELEMENTOS */
+const viewer = document.getElementById("viewer");
+const img = document.getElementById("imagenActiva");
+
+/* CONTADOR */
+const contador = document.createElement("div");
+contador.style.position = "absolute";
+contador.style.bottom = "30px";
+contador.style.color = "white";
+contador.style.fontSize = "18px";
+viewer.appendChild(contador);
+
+/* MOSTRAR */
+function mostrar(){
+  img.style.opacity = 0;
+
+  setTimeout(() => {
+    img.src = galerias[galeriaActual][indexActual];
+    contador.innerText = (indexActual + 1) + " / " + galerias[galeriaActual].length;
+    img.style.opacity = 1;
+  }, 150);
+}
+
+/* ABRIR */
 function abrirGaleria(id){
   galeriaActual = id;
   indexActual = 0;
-  document.getElementById("viewer").style.display = "flex";
+  viewer.style.display = "flex";
   mostrar();
 }
 
-function mostrar(){
-  document.getElementById("imagenActiva").src = galerias[galeriaActual][indexActual];
-}
-
+/* CAMBIAR */
 function cambiar(dir){
   const total = galerias[galeriaActual].length;
   indexActual = (indexActual + dir + total) % total;
   mostrar();
 }
 
+/* CERRAR */
 function cerrarGaleria(){
-  document.getElementById("viewer").style.display = "none";
+  viewer.style.display = "none";
 }
 
 /* TECLADO */
 document.addEventListener("keydown", (e) => {
-  if(document.getElementById("viewer").style.display === "flex"){
+  if(viewer.style.display === "flex"){
     if(e.key === "ArrowRight") cambiar(1);
     if(e.key === "ArrowLeft") cambiar(-1);
+    if(e.key === "Escape") cerrarGaleria();
+  }
+});
+
+/* 🔥 SWIPE (CELULAR) */
+let startX = 0;
+
+viewer.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+viewer.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+
+  if(startX - endX > 50){
+    cambiar(1); // izquierda → siguiente
+  }
+
+  if(endX - startX > 50){
+    cambiar(-1); // derecha → anterior
   }
 });
 
 </script>
+
 
 </body>
 </html>
