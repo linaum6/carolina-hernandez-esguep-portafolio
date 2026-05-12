@@ -39,23 +39,36 @@ object-fit:cover;
 z-index:1;
 }
 
-/* 🔥 TEXTOS SOBRE LA IMAGEN */
+/* 🔥 CONTENEDOR */
 .menu{
 position:relative;
 z-index:2;
-text-align:center;
-padding-top:35px;
+width:100%;
+height:100vh;
 }
 
+/* 🔥 NOMBRE CENTRADO */
 .menu h1{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
 font-size:28px;
 font-weight:bold;
-margin-bottom:18px;
 letter-spacing:1px;
 color:black;
+margin:0;
 }
 
-.menu a{
+/* 🔥 CATEGORÍAS ABAJO */
+.nav{
+position:absolute;
+bottom:40px;
+width:100%;
+text-align:center;
+}
+
+.nav a{
 margin:0 25px;
 text-decoration:none;
 color:black;
@@ -76,10 +89,12 @@ font-size:18px;
 
 <h1>Carolina Hernández Esguep</h1>
 
+<div class="nav">
 <a href="obras.html">Obras</a>
 <a href="pedagogia.html">Pedagogía</a>
 <a href="trayectoria.html">Trayectoria</a>
 <a href="contacto.html">Contacto</a>
+</div>
 
 </div>
 
