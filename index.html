@@ -18,24 +18,33 @@ margin:0;
 font-family:'TheSeason', serif;
 background:white;
 color:black;
+overflow:hidden;
 }
 
 .hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-}
-
-.hero img{
+position:relative;
 width:100%;
-height:85vh;
-object-fit:cover;
-margin-top:30px;
+height:100vh;
+overflow:hidden;
 }
 
+/* 🔥 IMAGEN PANTALLA COMPLETA */
+.hero img{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:1;
+}
+
+/* 🔥 TEXTOS SOBRE LA IMAGEN */
 .menu{
+position:relative;
+z-index:2;
 text-align:center;
-padding:35px 0 15px 0;
+padding-top:35px;
 }
 
 .menu h1{
@@ -43,12 +52,13 @@ font-size:28px;
 font-weight:bold;
 margin-bottom:18px;
 letter-spacing:1px;
+color:white; /* 👈 cambia a negro si lo prefieres */
 }
 
 .menu a{
 margin:0 25px;
 text-decoration:none;
-color:black;
+color:white; /* 👈 cambia a negro si lo prefieres */
 font-size:18px;
 }
 
@@ -59,6 +69,8 @@ font-size:18px;
 <body>
 
 <section class="hero">
+
+<img src="sintitulo.jpg">
 
 <div class="menu">
 
@@ -71,10 +83,7 @@ font-size:18px;
 
 </div>
 
-<img src="intervencion3.png">
-
 </section>
 
 </body>
-
 </html>
