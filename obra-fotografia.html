@@ -69,6 +69,57 @@ grid-template-columns: repeat(2, 1fr);
 }
 }
 
+/* 🔥 VISOR */
+.viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.viewer img{
+max-width:70%;
+max-height:70%;
+transition: opacity 0.3s ease;
+}
+
+/* BOTONES */
+.boton{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:40px;
+color:white;
+cursor:pointer;
+padding:20px;
+user-select:none;
+}
+
+.prev{ left:20px; }
+.next{ right:20px; }
+
+.cerrar{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
+
+.contador{
+position:absolute;
+bottom:30px;
+color:white;
+font-size:18px;
+}
+
 /* FOOTER */
 footer{
 text-align:center;
@@ -114,7 +165,6 @@ espacio y procesos de trabajo.
 
 <div class="galeria">
 
-
 <img src="foto8.jpg">
 
 <img src="foto7.jpg">
@@ -130,23 +180,136 @@ espacio y procesos de trabajo.
 <img src="foto12.JPG">
 <img src="foto11.JPG">
 
-<!-- 🔥 ESTAS VAN ANTES DE 17 Y 18 -->
 <img src="foto13.JPG">
 <img src="foto16.JPG">
 <img src="foto15.JPG">
 <img src="foto14.JPG">
 
-<!-- 🔥 ÚLTIMAS -->
 <img src="foto17.jpg">
 <img src="foto18.jpg">
 
 </div>
 
 </section>
+
+<!-- 🔥 VISOR -->
+<div class="viewer" id="viewer">
+
+<div class="cerrar" id="cerrar">✕</div>
+
+<div class="boton prev" id="prev">←</div>
+
+<img id="imagenActiva">
+
+<div class="boton next" id="next">→</div>
+
+<div class="contador" id="contador"></div>
+
+</div>
   
 <footer>
 Carolina Hernández Esguep - Artista Visual
 </footer>
+
+<script>
+
+const images = document.querySelectorAll('.galeria img');
+
+let currentIndex = 0;
+
+/* ELEMENTOS */
+const viewer = document.getElementById('viewer');
+const imgActiva = document.getElementById('imagenActiva');
+const contador = document.getElementById('contador');
+
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
+const cerrar = document.getElementById('cerrar');
+
+/* MOSTRAR */
+function mostrarImagen(index){
+
+imgActiva.style.opacity = 0;
+
+setTimeout(() => {
+
+imgActiva.src = images[index].src;
+
+contador.innerText = (index + 1) + " / " + images.length;
+
+imgActiva.style.opacity = 1;
+
+},150);
+
+}
+
+/* ABRIR */
+images.forEach((image, index) => {
+
+image.addEventListener('click', () => {
+
+currentIndex = index;
+
+viewer.style.display = 'flex';
+
+mostrarImagen(currentIndex);
+
+});
+
+});
+
+/* SIGUIENTE */
+next.onclick = () => {
+
+currentIndex = (currentIndex + 1) % images.length;
+
+mostrarImagen(currentIndex);
+
+};
+
+/* ANTERIOR */
+prev.onclick = () => {
+
+currentIndex = (currentIndex - 1 + images.length) % images.length;
+
+mostrarImagen(currentIndex);
+
+};
+
+/* CERRAR */
+cerrar.onclick = () => {
+
+viewer.style.display = 'none';
+
+};
+
+/* TECLADO */
+document.addEventListener('keydown', (e) => {
+
+if(viewer.style.display === 'flex'){
+
+if(e.key === 'ArrowRight') next.onclick();
+
+if(e.key === 'ArrowLeft') prev.onclick();
+
+if(e.key === 'Escape') viewer.style.display = 'none';
+
+}
+
+});
+
+/* CLICK FUERA */
+viewer.onclick = (e) => {
+
+if(e.target === viewer){
+
+viewer.style.display = 'none';
+
+}
+
+};
+
+</script>
   
 </body>
 
