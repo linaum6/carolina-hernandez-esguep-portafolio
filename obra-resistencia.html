@@ -34,7 +34,7 @@ font-size:18px;
 
 section{
 padding:60px;
-max-width:1000px;
+max-width:1200px;
 margin:auto;
 }
 
@@ -43,46 +43,46 @@ margin-bottom:40px;
 line-height:1.6;
 }
 
-/* 🔥 GALERIA */
+/* 🔥 GALERIA 4 COLUMNAS */
 .galeria{
 display:grid;
-grid-template-columns: repeat(2, 1fr);
+grid-template-columns: repeat(4, 1fr);
 gap:15px;
 }
 
 .galeria img{
 width:100%;
-height:420px;
+height:220px;
 object-fit:cover;
 cursor:pointer;
 transition: transform 0.3s ease;
 }
 
 .galeria img:hover{
-transform: scale(1.02);
+transform: scale(1.03);
 }
 
-/* 🔥 RESPONSIVE */
-@media (max-width:700px){
+/* RESPONSIVE */
+@media (max-width:900px){
+.galeria{
+grid-template-columns: repeat(2, 1fr);
+}
+}
 
+@media (max-width:600px){
 .galeria{
 grid-template-columns: 1fr;
 }
-
-.galeria img{
-height:auto;
 }
 
-}
-
-/* 🔥 VISOR */
+/* VISOR */
 .viewer{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.92);
+background:rgba(0,0,0,0.9);
 display:none;
 align-items:center;
 justify-content:center;
@@ -90,12 +90,12 @@ z-index:999;
 }
 
 .viewer img{
-max-width:75%;
-max-height:75%;
-transition: opacity 0.2s ease;
+max-width:70%;
+max-height:70%;
+transition: opacity 0.3s ease;
 }
 
-/* 🔥 BOTONES */
+/* BOTONES */
 .boton{
 position:absolute;
 top:50%;
@@ -126,7 +126,7 @@ color:white;
 font-size:18px;
 }
 
-/* 🔥 FOOTER */
+/* FOOTER */
 footer{
 text-align:center;
 font-size:12px;
@@ -167,24 +167,30 @@ la acumulación y los procesos materiales.
 </p>
 </div>
 
-<!-- 🔥 GALERIA -->
+<!-- 🔥 SOLO GALERIA -->
 <div class="galeria">
 
 <img src="papel1.png">
 <img src="papel11.JPG">
-
 <img src="papel19.png">
-<img src="papel21.png">
+<img src="papel2.jpg">
 
+<img src="papel21.png">
 <img src="papel29.JPG">
+<img src="papel3.jpg">
 <img src="papel32.JPG">
 
+<img src="papel4.jpg">
+<img src="papel5.jpg">
+<img src="papel6.jpg">
+<img src="papel7.jpg">
+
 <img src="papel8.JPG">
+<img src="papel9.jpg">
 <img src="papel38.JPG">
-
 <img src="papel16.JPG">
-<img src="papel24.JPG">
 
+<img src="papel24.JPG">
 <img src="papel31.JPG">
 
 </div>
@@ -198,10 +204,9 @@ Carolina Hernández Esguep - Artista Visual
 <script>
 
 const images = document.querySelectorAll('.galeria img');
-
 let currentIndex = 0;
 
-/* 🔥 VISOR */
+/* VISOR */
 const viewer = document.createElement('div');
 viewer.className = 'viewer';
 
@@ -230,7 +235,7 @@ viewer.appendChild(contador);
 
 document.body.appendChild(viewer);
 
-/* 🔥 MOSTRAR */
+/* MOSTRAR */
 function mostrarImagen(index){
 
 img.style.opacity = 0;
@@ -243,11 +248,11 @@ contador.innerText = (index + 1) + " / " + images.length;
 
 img.style.opacity = 1;
 
-}, 100);
+}, 150);
 
 }
 
-/* 🔥 CLICK */
+/* CLICK */
 images.forEach((image, index) => {
 
 image.addEventListener('click', () => {
@@ -262,7 +267,7 @@ mostrarImagen(currentIndex);
 
 });
 
-/* 🔥 BOTONES */
+/* BOTONES */
 next.onclick = () => {
 
 currentIndex = (currentIndex + 1) % images.length;
@@ -279,7 +284,7 @@ mostrarImagen(currentIndex);
 
 };
 
-/* 🔥 TECLADO */
+/* TECLADO */
 document.addEventListener('keydown', (e) => {
 
 if(viewer.style.display === 'flex'){
@@ -294,15 +299,13 @@ if(e.key === 'Escape') viewer.style.display = 'none';
 
 });
 
-/* 🔥 CERRAR */
+/* CERRAR */
 cerrar.onclick = () => viewer.style.display = 'none';
 
 viewer.onclick = (e) => {
 
 if(e.target === viewer){
-
 viewer.style.display = 'none';
-
 }
 
 };
