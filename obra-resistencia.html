@@ -25,8 +25,15 @@ padding:40px;
 text-align:center;
 }
 
+nav{
+display:flex;
+justify-content:space-evenly;
+align-items:center;
+width:100%;
+margin-top:20px;
+}
+
 nav a{
-margin:15px;
 text-decoration:none;
 color:black;
 font-size:18px;
@@ -43,7 +50,7 @@ margin-bottom:40px;
 line-height:1.6;
 }
 
-/* 🔥 GALERIA 4 COLUMNAS */
+/* 🔥 GALERÍA 4 COLUMNAS */
 .galeria{
 display:grid;
 grid-template-columns: repeat(4, 1fr);
@@ -52,7 +59,7 @@ gap:15px;
 
 .galeria img{
 width:100%;
-height:220px;
+height:240px;
 object-fit:cover;
 cursor:pointer;
 transition: transform 0.3s ease;
@@ -92,7 +99,6 @@ z-index:999;
 .viewer img{
 max-width:70%;
 max-height:70%;
-transition: opacity 0.3s ease;
 }
 
 /* BOTONES */
@@ -167,29 +173,20 @@ la acumulación y los procesos materiales.
 </p>
 </div>
 
-<!-- 🔥 SOLO GALERIA -->
+<!-- 🔥 GALERÍA -->
 <div class="galeria">
 
 <img src="papel1.png">
 <img src="papel11.JPG">
 <img src="papel19.png">
-<img src="papel2.jpg">
-
 <img src="papel21.png">
+
 <img src="papel29.JPG">
-<img src="papel3.jpg">
 <img src="papel32.JPG">
-
-<img src="papel4.jpg">
-<img src="papel5.jpg">
-<img src="papel6.jpg">
-<img src="papel7.jpg">
-
 <img src="papel8.JPG">
-<img src="papel9.jpg">
 <img src="papel38.JPG">
-<img src="papel16.JPG">
 
+<img src="papel16.JPG">
 <img src="papel24.JPG">
 <img src="papel31.JPG">
 
@@ -238,17 +235,9 @@ document.body.appendChild(viewer);
 /* MOSTRAR */
 function mostrarImagen(index){
 
-img.style.opacity = 0;
-
-setTimeout(() => {
-
 img.src = images[index].src;
 
 contador.innerText = (index + 1) + " / " + images.length;
-
-img.style.opacity = 1;
-
-}, 150);
 
 }
 
