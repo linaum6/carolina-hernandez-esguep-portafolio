@@ -19,6 +19,7 @@ margin:0;
 background:white;
 color:black;
 }
+
 header{
 padding:40px;
 text-align:center;
@@ -33,13 +34,8 @@ font-size:18px;
 
 section{
 padding:60px;
-max-width:900px;
+max-width:1000px;
 margin:auto;
-}
-
-.galeria img{
-width:100%;
-margin-bottom:40px;
 }
 
 .descripcion{
@@ -47,15 +43,42 @@ margin-bottom:40px;
 line-height:1.6;
 }
 
-footer{
-  text-align:center;
-  font-size:12px;
-  color:gray;
-  padding:20px 0;
-  border-top:1px solid #eee;
-  margin-top:40px; /* 👈 esto ayuda a separarlo del contenido */
+/* 🔥 GALERÍA */
+.galeria{
+display:grid;
+grid-template-columns: repeat(3, 1fr);
+gap:20px;
 }
-  
+
+.galeria img{
+width:100%;
+height:220px;
+object-fit:cover;
+cursor:pointer;
+transition: transform 0.3s ease;
+}
+
+.galeria img:hover{
+transform:scale(1.03);
+}
+
+/* RESPONSIVE */
+@media (max-width:700px){
+.galeria{
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+font-size:12px;
+color:gray;
+padding:20px 0;
+border-top:1px solid #eee;
+margin-top:40px;
+}
+
 </style>
 
 </head>
@@ -91,7 +114,34 @@ espacio y procesos de trabajo.
 
 <div class="galeria">
 
+<img src="foto1.jpg">
+<img src="foto10.jpg">
+<img src="foto8.jpg">
+
+<img src="foto7.jpg">
+<img src="foto6.jpg">
+<img src="foto5.jpg">
+
+<img src="foto3.jpg">
+<img src="foto2.jpg">
+<img src="foto4.jpg">
+
+<img src="foto9.jpg">
+<img src="foto19.jpg">
+<img src="foto18.jpg">
+
+<img src="foto12.JPG">
+<img src="foto11.JPG">
+
+<!-- 🔥 ESTAS VAN ANTES DE 17 Y 18 -->
 <img src="foto13.JPG">
+<img src="foto16.JPG">
+<img src="foto15.JPG">
+<img src="foto14.JPG">
+
+<!-- 🔥 ÚLTIMAS -->
+<img src="foto17.JPG">
+<img src="foto18.JPG">
 
 </div>
 
